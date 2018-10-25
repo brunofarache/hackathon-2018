@@ -1,0 +1,24 @@
+{
+  "name": "hackathon-2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunofarache/hackathon-2018.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunofarache/hackathon-2018/issues"
+  },
+  "homepage": "https://github.com/brunofarache/hackathon-2018#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "instagram-node": "^0.5.8"
+  }
+}
