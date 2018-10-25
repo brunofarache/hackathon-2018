@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-const REDIRECT_URL = 'http://localhost:3000/redirect';
 const http = require('http');
 const express = require('express');
 const api = require('instagram-node').instagram();
@@ -30,22 +29,36 @@ api.use({
     client_secret: process.env.client_secret
 });
 
+var redirectURL = 'http://localhost:' + port;
+
+if (process.env.REDIRECT_URL) {
+    redirectURL = process.env.REDIRECT_URL;
+}
+
+redirectURL += '/redirect';
 
 app.get('/auth', (req, res) => {
-    res.redirect(api.get_authorization_url(REDIRECT_URL, {
+    res.redirect(api.get_authorization_url(redirectURL, {
         scope: ['basic', 'public_content'],
         state: '' 
     }));
 });
 
+var liferayURL = 'http://localhost:8080';
+
+if (process.env.LIFERAY_URL) {
+    liferayURL = process.env.LIFERAY_URL;
+}
+
 app.get('/redirect', (req, res) => {
-    api.authorize_user(req.query.code, REDIRECT_URL, function(err, {access_token}) {
+    api.authorize_user(req.query.code, redirectURL, function(err, result) {
         if (err) {
             console.log(err.body);
             res.send("Didn't work");
         }
         else {
-            res.redirect(`http://localhost:8080/?access_token=${access_token}`);
+            console.log('Access token: ' + token);
+            res.redirect(liferayURL + '/?access_token=' + token);
         }
     });
 });
