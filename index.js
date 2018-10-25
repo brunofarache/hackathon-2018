@@ -51,14 +51,14 @@ if (process.env.LIFERAY_URL) {
 }
 
 app.get('/redirect', (req, res) => {
-    api.authorize_user(req.query.code, redirectURL, function(err, result) {
+    api.authorize_user(req.query.code, redirectURL, function(err, {access_token}) {
         if (err) {
             console.log(err.body);
             res.send("Didn't work");
         }
         else {
-            console.log('Access token: ' + token);
-            res.redirect(liferayURL + '/?access_token=' + token);
+            console.log('Access token: ' + access_token);
+            res.redirect(liferayURL + '/?access_token=' + access_token);
         }
     });
 });
