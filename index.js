@@ -26,9 +26,10 @@ app.get('/redirect', (req, res) => {
             res.send("Didn't work");
         }
         else {
-            console.log('Access token is ' + result.access_token);
-            api.use({ access_token: result.access_token });
-            res.send('You made it!!');
+            var token = result.access_token;
+            console.log('Access token is ' + token);
+            api.use({ access_token: token });
+            res.redirect('http://localhost:8080/?access_token=' + token);
         }
     });
 });
