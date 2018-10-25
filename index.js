@@ -15,6 +15,16 @@ const sendError = (res, message) => {
     })
 }
 
+const predict = (res, images) => res.status({
+    status: 'success'
+})
+
+var port = 3000;
+
+if (process.env.PORT) {
+    port = process.env.PORT;
+}
+
 api.use({
     client_id: process.env.client_id,
     client_secret: process.env.client_secret
@@ -63,6 +73,6 @@ app.get('/make-prediction', (req, res) => {
     )
 });
  
-http.createServer(app).listen(3000, function(){
-    console.log("Express server listening on port 3000");
+http.createServer(app).listen(port, function(){
+    console.log("Express server listening on port: " + port);
 });
