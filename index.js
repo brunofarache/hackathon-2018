@@ -6,6 +6,7 @@ const express = require('express');
 const api = require('instagram-node').instagram();
 const request = require('request');
 const app = express();
+const { predict } = require('./instagram');
 
 const sendError = (res, message) => {
     res.status(500).send({
@@ -13,10 +14,6 @@ const sendError = (res, message) => {
         message
     })
 }
-
-const predict = (res, images) => res.status({
-    status: 'success'
-})
 
 api.use({
     client_id: process.env.client_id,
@@ -61,7 +58,7 @@ app.get('/make-prediction', (req, res) => {
             
             const images = body.data.map(media => media.images.standard_resolution.url);
 
-            return predict(images);
+            return predict(res, images);
         }
     )
 });

@@ -3,7 +3,7 @@ require('dotenv').config();
 const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
 
-function detect(url) {
+const detect = (url) => {
     return new Promise((resolve, reject) => {
         client
         .labelDetection(url)
@@ -13,9 +13,10 @@ function detect(url) {
                 return label.description;
             });
     
-            throw new Error('iuiu');
             resolve(descriptions);
             
         }).catch(reject);
     })
 }
+
+module.exports = detect;
