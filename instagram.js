@@ -1,7 +1,7 @@
 const googleDetect = require('./google');
 
 const goodWords = ['fun', 'sports', 'health food', 'dog', 'puppy', 'vegetable', 'salad', 'leaf vegetable', 'spinach salad', 'vegetarian food', 'superfood', 'caesar salad', 'asian food', 'muscle', 'ultramarathon', 'race', 'running', 'trail', 'duathlon', 'endurance sports', 'long distance running', 'athletics', 'gym', 'exercise equipment'];
-const badWords = ['junk food', 'nightclub', 'milkshake', 'fast food', 'french fries', 'burguer', 'cigarret']
+const badWords = ['junk food', 'nightclub', 'milkshake', 'fast food', 'french fries', 'burguer', 'cigarret', 'tobacco', 'cigar', 'tobacco products', 'tobacco product', 'obesity']
 
 const getTagIndex = (words, tag) => {
 	return words.reduce((prev, {keyword}, index, original) => {
