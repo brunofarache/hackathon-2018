@@ -113,7 +113,9 @@ app.post('/bot', (req, res) => {
         result.fulfillmentText = "Você com o peso normal, o seguro custará 350 reais por mês.";
     }
 
-    res.send(JSON.stringify(result));
+    var resultJson = JSON.stringify(result);
+    console.log('result' + resultJson);
+    res.send(resultJson);
 });
  
 http.createServer(app).listen(port, function(){
