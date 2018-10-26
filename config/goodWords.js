@@ -1,4 +1,7 @@
 module.exports = [
+	'banana',
+	'fruit',
+	'orange',
 	'fun',
 	'sports',
 	'health food',
