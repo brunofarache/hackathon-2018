@@ -84,6 +84,29 @@ app.get('/make-prediction', (req, res) => {
         }
     )
 });
+
+app.post('/bot', (req, res) => {
+    var weight = req.query.weight;
+    var height = req.query.height;
+    var smokes = req.query.smokes;
+
+    if (smokes == 'true') {
+        res.send("Ih, você fuma, seu seguro custará 3000 reais por mês.");
+        return;
+    }
+    
+    var imc = weight / (height * height);
+
+    if (imc < 18.5) {
+        res.send("Você está desnutrido! Seu seguro custará 650 reais por mês.");
+    }
+    else if (imc > 25) {
+        res.send("Você está com sobrepeso! Seu seguro custará 650 reais por mês.");
+    }
+    else {
+        res.send("Você com o peso normal, o seguro custará 350 reais por mês.");
+    }
+});
  
 http.createServer(app).listen(port, function(){
     console.log("Express server listening on port: " + port);
