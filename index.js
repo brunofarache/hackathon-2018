@@ -14,10 +14,6 @@ const sendError = (res, message) => {
     })
 }
 
-const predict = (res, images) => res.status({
-    status: 'success'
-})
-
 var port = 3000;
 
 if (process.env.PORT) {
