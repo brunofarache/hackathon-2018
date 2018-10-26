@@ -88,9 +88,9 @@ app.get('/make-prediction', (req, res) => {
 });
 
 app.post('/bot', (req, res) => {
-    var weight = req.body.weight;
-    var height = req.body.height;
-    var smokes = req.body.smokes;
+    var weight = req.body.queryResult.parameters.weight;
+    var height = req.body.queryResult.parameters.height;
+    var smokes = req.body.queryResult.parameters.smokes;
 
     console.log(req.body);
 
