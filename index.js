@@ -7,6 +7,7 @@ const api = require('instagram-node').instagram();
 const request = require('request');
 const app = express();
 const { predict } = require('./instagram');
+var bodyParser = require('body-parser');
 
 const sendError = (res, message) => {
     res.status(500).send({
@@ -21,7 +22,8 @@ if (process.env.PORT) {
     port = process.env.PORT;
 }
 
-app.use(cors())
+app.use(cors());
+app.use(bodyParser.json());
 
 api.use({
     client_id: process.env.client_id,
@@ -87,9 +89,11 @@ app.get('/make-prediction', (req, res) => {
 });
 
 app.post('/bot', (req, res) => {
-    var weight = req.query.weight;
-    var height = req.query.height;
-    var smokes = req.query.smokes;
+    var weight = req.body.weight;
+    var height = req.body.height;
+    var smokes = req.body.smokes;
+
+    console.log(body);
 
     if (smokes == 'true') {
         res.send("Ih, você fuma, seu seguro custará 3000 reais por mês.");
