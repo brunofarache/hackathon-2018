@@ -22,5 +22,7 @@ module.exports = [
 	'long distance running',
 	'athletics',
 	'gym',
-	'exercise equipment'
+	'exercise equipment',
+	'recreation',
+	'veggie burger'
 ].map(keyword => keyword.toLowerCase());;
