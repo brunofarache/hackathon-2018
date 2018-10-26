@@ -59,7 +59,7 @@ app.get('/redirect', (req, res) => {
         }
         else {
             console.log('Access token: ' + result.access_token);
-            res.redirect(`${liferayURL}/?access_token=${result.access_token}&name=${result.user.full_name}`);
+            res.redirect(`${liferayURL}/?access_token=${result.access_token}&name=${result.user.full_name}&username=${result.user.username}`);
         }
     });
 });
