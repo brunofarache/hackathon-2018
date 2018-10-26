@@ -20,28 +20,40 @@ const predict = (res, images) => {
 				const badIndex = getTagIndex(prev.bad, tag);
 				const goodIndex = getTagIndex(prev.good, tag);
 
-				if((badWords.indexOf(tag) != -1) && typeof badIndex == 'number'){
-					prev.bad[badIndex].occurrencies += 1;
-				}else if(badWords.indexOf(tag) != -1){
-					prev.bad.push({
-						keyword: tag,
-						occurrencies: 1
-					})
-				}else if((goodWords.indexOf(tag) != -1) && typeof goodIndex == 'number'){
-					prev.good[goodIndex].occurrencies += 1;
+				if(badWords.indexOf(tag) != -1) {
+					prev.totalBad += 1;
+
+					if(typeof badIndex == 'number'){
+						prev.bad[badIndex].occurrencies += 1;
+					}else {
+						prev.bad.push({
+							keyword: tag,
+							occurrencies: 1
+						})
+					}
 				}else if(goodWords.indexOf(tag) != -1){
-					prev.good.push({
-						keyword: tag,
-						occurrencies: 1
-					})
+					prev.totalGood += 1;
+
+					if(typeof goodIndex == 'number'){
+						prev.good[goodIndex].occurrencies += 1;
+					}else {
+						prev.good.push({
+							keyword: tag,
+							occurrencies: 1
+						})
+					}
 				}
 			})
 			
 			return prev;
 		}, {
 			bad:[],
-			good: []
+			good: [],
+			totalBad: 0,
+			totalGood: 0
 		});
+
+		result.score = result.totalGood / (result.totalGood + result.totalBad);
 
 		res.send({
 			status: 'success',
