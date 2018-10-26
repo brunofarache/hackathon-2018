@@ -94,22 +94,26 @@ app.post('/bot', (req, res) => {
 
     console.log(req.body);
 
-    if (smokes == 'true') {
-        res.send("Ih, você fuma, seu seguro custará 3000 reais por mês.");
-        return;
+    var result = {
+        "speech": ""
     }
     
     var imc = weight / (height * height);
 
-    if (imc < 18.5) {
-        res.send("Você está desnutrido! Seu seguro custará 650 reais por mês.");
+    if (smokes == 'true') {
+        result.speech = "Ih, você fuma, seu seguro custará 3000 reais por mês.";
+    }
+    else if (imc < 18.5) {
+        result.speech = "Você está desnutrido! Seu seguro custará 650 reais por mês.";
     }
     else if (imc > 25) {
-        res.send("Você está com sobrepeso! Seu seguro custará 650 reais por mês.");
+        result.speech = "Você está com sobrepeso! Seu seguro custará 650 reais por mês.";
     }
     else {
-        res.send("Você com o peso normal, o seguro custará 350 reais por mês.");
+        result.speech = "Você com o peso normal, o seguro custará 350 reais por mês.";
     }
+
+    res.send(JSON.stringify(result));
 });
  
 http.createServer(app).listen(port, function(){
