@@ -95,22 +95,22 @@ app.post('/bot', (req, res) => {
     console.log(req.body);
 
     var result = {
-        "speech": ""
+        "fulfillmentText": ""
     }
     
     var imc = weight / (height * height);
 
     if (smokes == 'true') {
-        result.speech = "Ih, você fuma, seu seguro custará 3000 reais por mês.";
+        result.fulfillmentText = "Ih, você fuma, seu seguro custará 3000 reais por mês.";
     }
     else if (imc < 18.5) {
-        result.speech = "Você está desnutrido! Seu seguro custará 650 reais por mês.";
+        result.fulfillmentText = "Você está desnutrido! Seu seguro custará 650 reais por mês.";
     }
     else if (imc > 25) {
-        result.speech = "Você está com sobrepeso! Seu seguro custará 650 reais por mês.";
+        result.fulfillmentText = "Você está com sobrepeso! Seu seguro custará 650 reais por mês.";
     }
     else {
-        result.speech = "Você com o peso normal, o seguro custará 350 reais por mês.";
+        result.fulfillmentText = "Você com o peso normal, o seguro custará 350 reais por mês.";
     }
 
     res.send(JSON.stringify(result));
