@@ -53,7 +53,6 @@ if (process.env.LIFERAY_URL) {
 
 app.get('/redirect', (req, res) => {
     api.authorize_user(req.query.code, redirectURL, function(err, result) {
-        console.log(result);
         if (err) {
             console.log(err.body);
             res.send("Didn't work");
