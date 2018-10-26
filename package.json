@@ -18,6 +18,7 @@
   "homepage": "https://github.com/brunofarache/hackathon-2018#readme",
   "dependencies": {
     "@google-cloud/vision": "^0.22.1",
+    "cors": "^2.8.4",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "instagram-node": "^0.5.8",

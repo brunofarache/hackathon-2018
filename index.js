@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const http = require('http');
 const express = require('express');
+var cors = require('cors')
 const api = require('instagram-node').instagram();
 const request = require('request');
 const app = express();
@@ -19,6 +20,8 @@ var port = 3000;
 if (process.env.PORT) {
     port = process.env.PORT;
 }
+
+app.use(cors())
 
 api.use({
     client_id: process.env.client_id,
