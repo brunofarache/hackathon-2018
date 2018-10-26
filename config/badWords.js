@@ -11,9 +11,13 @@ module.exports = [
 	'tobacco products',
 	'tobacco product',
 	'obesity',
-	'Drink',
-	'Cocktail',
-	'Alcoholic Beverage',
-	'Liqueur',
-	'Distilled Beverage'
+	'drink',
+	'cocktail',
+	'alcoholic veverage',
+	'liqueur',
+	'distilled beverage',
+	'beer',
+	'bred',
+	'druggs',
+	'hamburguer'
 ].map(keyword => keyword.toLowerCase());
