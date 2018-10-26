@@ -92,7 +92,7 @@ app.post('/bot', (req, res) => {
     var height = req.body.height;
     var smokes = req.body.smokes;
 
-    console.log(body);
+    console.log(req.body);
 
     if (smokes == 'true') {
         res.send("Ih, você fuma, seu seguro custará 3000 reais por mês.");
